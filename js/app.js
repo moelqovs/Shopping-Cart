@@ -40,8 +40,25 @@ const leerDatosCurso = (curso) => {
         cantidad: 1
     }
 
-    //Agregar elementos del dato curso al carrito
-    articulosCarrito = [...articulosCarrito,infoCurso]
+    //revisar si un elemento ya existe en el carrito
+    const existe = articulosCarrito.some ( curso => curso.id === infoCurso.id )
+    
+    if (existe){
+        //actualizar cantidad de elementos
+        const cursos = articulosCarrito.map ( curso => {
+            if (curso.id === infoCurso.id) {
+                curso.cantidad++
+                return curso //retorna objeto actualizado
+            }else{
+                return curso //retorna objetos no duplicados
+            }
+        })
+        articulosCarrito = [...cursos]
+    }else{
+        //Agregar elementos del dato curso al carrito
+        articulosCarrito = [...articulosCarrito,infoCurso]
+    }
+
     carritoHTML()
     console.log(articulosCarrito)
 }
