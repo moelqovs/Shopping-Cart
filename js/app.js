@@ -11,8 +11,10 @@ let articulosCarrito = []
 //listeners carrito
 const cargarListeners = () => {
     //agregar un curso al carrito con el click del boton "agregar al carrito"
-    listaCursos.addEventListener('click',agregarCurso)
+    listaCursos.addEventListener('click', agregarCurso)
 
+    //eliminar curso del carrito
+    carrito.addEventListener('click', eliminarCurso)
 }
 
 
@@ -97,6 +99,18 @@ const limpiarHTML = () => {
 }
 
 
+//eliminar un curso de carrtito
+const eliminarCurso = (e) => {
+    
+    if (e.target.classList.contains('borrar-curso')) {
+        const cursoId = e.target.getAttribute('data-id')
+
+        //eliminar del arreglo por el data-id
+        articulosCarrito = articulosCarrito.filter(curso => curso.id !== cursoId)
+
+        carritoHTML() //iterar carrito de nuevo  y mostrar en el html
+    }
+}
 
 
 // llamar funciones
