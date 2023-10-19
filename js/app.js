@@ -15,6 +15,13 @@ const cargarListeners = () => {
 
     //eliminar curso del carrito
     carrito.addEventListener('click', eliminarCurso)
+
+    //Vaciar carrito
+    vaciarCarrito.addEventListener('click', () => {
+        articulosCarrito = []
+        //limpiar el html
+        limpiarHTML()
+    })
 }
 
 
